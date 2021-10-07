@@ -11,7 +11,7 @@ function Insattning(props: Props) {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-        let theDeposit = parseInt(deposit);
+        let theDeposit: number = parseInt(deposit);
         sendDeposit(theDeposit);
         setDeposit('');
     };
@@ -29,6 +29,7 @@ function Insattning(props: Props) {
                     onChange={onChange}
                     value={deposit}
                     placeholder='...'
+                    required
                 ></input>
                 <br />
                 <button type='submit'>Sätt in</button>

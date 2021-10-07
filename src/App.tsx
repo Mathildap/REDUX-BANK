@@ -2,9 +2,9 @@ import './App.css';
 import Saldo from './components/Saldo';
 import Insattning from './components/Insattning';
 import Uttag from './components/Uttag';
-import setDeposit from './action';
-import setWithdraw from './action';
 import { store } from './store';
+import setDeposit from './action/index';
+import setWithdraw from './action/dec.js';
 
 function App() {
     const sendDeposit = (amount: number) => {
@@ -12,7 +12,7 @@ function App() {
     };
 
     const sendWithdraw = (amount: number) => {
-        store.dispatch(setWithdraw(-amount));
+        store.dispatch(setWithdraw(amount));
     };
 
     return (

@@ -11,7 +11,7 @@ function Uttag(props: Props) {
 
     const onSubmit = (e: any) => {
         e.preventDefault();
-        let theWithdraw = parseInt(withdraw);
+        let theWithdraw: number = parseInt(withdraw);
         sendWithdraw(theWithdraw);
         setWithdraw('');
     };
@@ -29,6 +29,7 @@ function Uttag(props: Props) {
                     onChange={onChange}
                     value={withdraw}
                     placeholder='...'
+                    required
                 ></input>
                 <br />
                 <button type='submit'>Ta ut</button>
