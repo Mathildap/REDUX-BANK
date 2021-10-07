@@ -1,58 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
 import './App.css';
+import Saldo from './components/Saldo';
+import Insattning from './components/Insattning';
+import Uttag from './components/Uttag';
+import setDeposit from './action';
+import setWithdraw from './action';
+import { store } from './store';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    const sendDeposit = (amount: number) => {
+        store.dispatch(setDeposit(amount));
+    };
+
+    const sendWithdraw = (amount: number) => {
+        store.dispatch(setWithdraw(-amount));
+    };
+
+    return (
+        <main>
+            <h1>
+                REDUX BANK <i className='far fa-money-bill-alt'></i>
+            </h1>
+            <Saldo />
+            <section className='dep-wit-container'>
+                <Insattning sendDeposit={sendDeposit} />
+                <Uttag sendWithdraw={sendWithdraw} />
+            </section>
+        </main>
+    );
 }
 
 export default App;
